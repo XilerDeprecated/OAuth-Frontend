@@ -1,4 +1,4 @@
-import { accent, accentDark, primary } from "../../settings/themes";
+import { accent, accentDark, primary } from "../../../settings/themes";
 import styled, { css } from "styled-components";
 
 export const OAuthBackgroundWrapper = styled.div`

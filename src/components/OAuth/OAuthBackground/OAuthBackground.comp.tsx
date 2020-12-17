@@ -7,7 +7,7 @@ import {
 
 import React from "react";
 
-export const OAuthBackground = () => {
+export const OAuthBackground: React.FC = () => {
   return (
     <OAuthBackgroundWrapper>
       <OAuthBackgroundColorWrapper>

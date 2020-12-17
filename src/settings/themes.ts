@@ -8,6 +8,10 @@ export const primaryDark = theme("mode", {
   light: "#dcdcdd",
 });
 
+export const secondary = theme("mode", {
+    light: "#4c5c68"
+})
+
 export const secondaryDark = theme("mode", {
     light: "#46494c"
 })

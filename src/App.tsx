@@ -23,7 +23,7 @@ const App = () => {
       <Switch>
         <Route
           exact
-          path="/:app/:id/:redirect"
+          path="/:organisation/:id/:redirect"
           render={() =>
             getComponentWithLayout(
               AuthorizePage,
@@ -33,7 +33,7 @@ const App = () => {
         />
         <Route
           exact
-          path="/signin/:app/:id/:redirect"
+          path="/signin/:organisation/:id/:redirect"
           component={SignInRedirector}
         />
         <Route
