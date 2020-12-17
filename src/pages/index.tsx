@@ -1,5 +1,11 @@
+import { OAuthBackground } from "../components/OAuthBackground/OAuthBackground.comp";
 import React from "react";
 
 export const AuthorizePage: React.FC = () => {
-  return <div>Hello World</div>;
+  return (
+    <main>
+      Hello World
+      <OAuthBackground />
+    </main>
+  );
 };

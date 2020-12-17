@@ -6,7 +6,6 @@ import {
 
 import { AuthorizePage } from "./pages";
 import { DefaultLayout } from "./layouts/DefaultLayout/DefaultLayout.comp";
-import { Loader } from "./components/Loading/Loader.comp";
 import React from "react";
 import { SignInRedirector } from "./components/SignInRedirector/SignInRedirector.comp";
 
