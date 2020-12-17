@@ -1,15 +1,16 @@
-import {
-  Route,
-  BrowserRouter as Router,
-  Switch
-} from "react-router-dom";
+import { Redirect, Route, Router, Switch } from "react-router-dom";
 
 import { AuthorizePage } from "./pages";
 import { DefaultLayout } from "./layouts/DefaultLayout/DefaultLayout.comp";
 import React from "react";
 import { SignInRedirector } from "./components/SignInRedirector/SignInRedirector.comp";
+import { history } from "./utils/history";
 
-const getComponentWithLayout = (Component: React.FC, title: string, after: boolean = true) => {
+const getComponentWithLayout = (
+  Component: React.FC,
+  title: string,
+  after: boolean = true
+) => {
   return (
     <DefaultLayout title={title} after={after}>
       <Component />
@@ -19,7 +20,7 @@ const getComponentWithLayout = (Component: React.FC, title: string, after: boole
 
 const App = () => {
   return (
-    <Router>
+    <Router history={history}>
       <Switch>
         <Route
           exact
@@ -41,7 +42,7 @@ const App = () => {
           path="/account"
           render={() => (window.location.href = "http://accounts.xiler.net")}
         />
-        {/* <Redirect to="/account" /> */}
+        <Redirect to="/account" />
       </Switch>
     </Router>
   );
