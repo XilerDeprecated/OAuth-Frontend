@@ -1,21 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/assets/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Xiler OAuth"
+    <meta name="theme-color" content="#2BBADE" />
+    <meta name="description" content="Xiler OAuth" />
+    <link
+      rel="apple-touch-icon"
+      href="%PUBLIC_URL%/assets/icons/icon-192x192.png"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <base href="%PUBLIC_URL%/">
+    <base href="%PUBLIC_URL%/" />
     <title>Xiler</title>
   </head>
   <body>
     <noscript>To access this site you have to enable JavaScript!</noscript>
     <div id="root"></div>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "Xiler",
+        "url": "https://xiler.net",
+        "address": "",
+        "sameAs": [
+          "https://www.facebook.com/XilerNet/",
+          "https://twitter.com/XilerNetwork"
+        ]
+      }
+    </script>
   </body>
 </html>

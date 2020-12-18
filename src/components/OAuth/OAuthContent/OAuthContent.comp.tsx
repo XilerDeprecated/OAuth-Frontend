@@ -16,6 +16,7 @@ import { OAuthPermissions } from "../OAuthPermissions/OAuthPermissions.comp";
 import { OAuthSectionSeperator } from "../OAuth.styled";
 import { OAuthUrlParams } from "../OAuth.types";
 import React from "react";
+import { Seo } from "../../Seo.comp";
 import { XilerAccount } from "../XilerAccounts/Account.types";
 
 const organisation: XilerOrganisation = {
@@ -67,16 +68,25 @@ export const OAuthContent: React.FC<OAuthUrlParams> = (props) => {
   // {props.organisation} {props.id} {props.redirect}
 
   return (
-    <OAuthContentOuterWrapper>
-      <OAuthContentWrapper>
-        <OAuthHeader user={user} organization={OAuthData.organisation} />
-        <OAuthSectionSeperator />
-        <OAuthPermissions {...OAuthData.app} />
-        <OAuthSectionSeperator />
-        <OAuthInfo {...OAuthData} />
-        <OAuthSectionSeperator />
-        <OAuthMenu {...OAuthData} />
-      </OAuthContentWrapper>
-    </OAuthContentOuterWrapper>
+    <React.Fragment>
+      <Seo
+        color="#2BBADE"
+        description={`Authorize ${OAuthData.organisation.name} to access your Xiler account. This will allow them to see your ${OAuthData.app.permissions.map(permission => permission.name).join(", ")}.`}
+        title={`Xiler - Authorize ${OAuthData.organisation.name}`}
+        image={OAuthData.organisation.avatar}
+        imageAlt={`${OAuthData.organisation.avatar} its Xiler avatar`}
+      />
+      <OAuthContentOuterWrapper>
+        <OAuthContentWrapper>
+          <OAuthHeader user={user} organization={OAuthData.organisation} />
+          <OAuthSectionSeperator />
+          <OAuthPermissions {...OAuthData.app} />
+          <OAuthSectionSeperator />
+          <OAuthInfo {...OAuthData} />
+          <OAuthSectionSeperator />
+          <OAuthMenu {...OAuthData} />
+        </OAuthContentWrapper>
+      </OAuthContentOuterWrapper>
+    </React.Fragment>
   );
 };
