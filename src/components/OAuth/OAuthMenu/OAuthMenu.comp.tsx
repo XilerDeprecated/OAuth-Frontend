@@ -15,8 +15,8 @@ export const OAuthMenu: React.FC<OAuthMenuProps> = (props) => {
 
   return (
     <OAuthMenuWrapper>
-      <OAuthMenuCancel href={`${url}?code=499`}>{props.lang.menu.cancel}</OAuthMenuCancel>
-      <OAuthMenuAuthorize onClick={() => window.location.href = `${url}?code=${getAuthToken(props.oauth.app)}`}>{props.lang.menu.authorize}</OAuthMenuAuthorize>
+      <OAuthMenuCancel href={`${url}?code=499`}>{props.lang.site.menu.cancel}</OAuthMenuCancel>
+      <OAuthMenuAuthorize onClick={() => window.location.href = `${url}?code=${getAuthToken(props.oauth.app)}`}>{props.lang.site.menu.authorize}</OAuthMenuAuthorize>
     </OAuthMenuWrapper>
   );
 };

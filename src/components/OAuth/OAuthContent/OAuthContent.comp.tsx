@@ -36,12 +36,10 @@ const app: XilerApp = {
     {
       id: 1,
       name: "email",
-      description: "Access your email adress",
     },
     {
       id: 2,
       name: "connections",
-      description: "Access your third-party connections",
     },
   ],
 };
@@ -76,14 +74,14 @@ export const OAuthContent: React.FC<OAuthUrlParams> = (props) => {
     <React.Fragment>
       <Seo
         color="#2BBADE"
-        description={`${l.helmet.description.authorize} ${
+        description={`${l.site.helmet.description.authorize} ${
           OAuthData.organisation.name
-        } ${l.helmet.description.allowed} ${OAuthData.app.permissions
+        } ${l.site.helmet.description.allowed} ${OAuthData.app.permissions
           .map((permission) => permission.name)
           .join(", ")}.`}
-        title={`${l.helmet.title} ${OAuthData.organisation.name}`}
+        title={`${l.site.helmet.title} ${OAuthData.organisation.name}`}
         image={OAuthData.organisation.avatar}
-        imageAlt={`${OAuthData.organisation.avatar} ${l.helmet.avatarAlt}`}
+        imageAlt={`${OAuthData.organisation.avatar} ${l.site.helmet.avatarAlt}`}
       />
       <OAuthContentOuterWrapper>
         <OAuthContentWrapper>

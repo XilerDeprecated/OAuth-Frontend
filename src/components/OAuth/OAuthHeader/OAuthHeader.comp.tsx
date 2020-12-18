@@ -24,16 +24,16 @@ export const OAuthHeader: React.FC<OAuthHeaderProps> = (props) => {
       <OAuthHeaderOrganization>
         {props.oauth.organisation.name}
       </OAuthHeaderOrganization>
-      <OAuthHeaderMessage>{props.lang.header.accessMessage} <OAuthUser>({props.user.firstName} {props.user.lastName})</OAuthUser></OAuthHeaderMessage>
+      <OAuthHeaderMessage>{props.lang.site.header.accessMessage} <OAuthUser>({props.user.firstName} {props.user.lastName})</OAuthUser></OAuthHeaderMessage>
       <OAuthOrSignOutMessage>
-        {props.lang.header.or}{" "}
+        {props.lang.site.header.or}{" "}
         <OAuthSignOut
           onClick={() => {
             deleteCookie("token");
             window.location.href = `/signin/${props.oauth.organisation.id}/${props.oauth.app.id}/${props.oauth.redirect.id}`;
           }}
         >
-          {props.lang.header.otherAccount}
+          {props.lang.site.header.otherAccount}
         </OAuthSignOut>
       </OAuthOrSignOutMessage>
     </OAuthHeaderWrapper>

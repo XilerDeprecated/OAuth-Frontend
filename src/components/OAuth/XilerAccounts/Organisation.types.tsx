@@ -8,7 +8,6 @@ export interface XilerOrganisation {
 export interface XilerOAuthPermission {
     id: number;
     name: string;
-    description: string;
 }
 
 export interface XilerApp {

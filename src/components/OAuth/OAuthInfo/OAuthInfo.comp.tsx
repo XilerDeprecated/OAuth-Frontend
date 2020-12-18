@@ -7,9 +7,9 @@ export const OAuthInfo: React.FC<OAuthInfoProps> = (props) => {
   return (
     <OAuthInfoWrapper>
       <OAuthInfoItems>
-          <OAuthInfoItem>{props.lang.info.authorize} {props.oauth.redirect.target}</OAuthInfoItem>
-          <OAuthInfoItem>{props.lang.info.exists} {props.oauth.organisation.createdAt.toLocaleDateString()}</OAuthInfoItem>
-          <OAuthInfoItem>{props.lang.info.information}</OAuthInfoItem>
+          <OAuthInfoItem>{props.lang.site.info.authorize} {props.oauth.redirect.target}</OAuthInfoItem>
+          <OAuthInfoItem>{props.lang.site.info.exists} {props.oauth.organisation.createdAt.toLocaleDateString()}</OAuthInfoItem>
+          <OAuthInfoItem>{props.lang.site.info.information}</OAuthInfoItem>
       </OAuthInfoItems>
     </OAuthInfoWrapper>
   );

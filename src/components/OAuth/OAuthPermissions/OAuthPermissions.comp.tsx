@@ -12,7 +12,8 @@ export const OAuthPermissions: React.FC<OAuthPermissionsProps> = (props) => {
   return (
     <OAuthPermissionsWrapper>
       <OAuthPermissionsMessage>
-        {props.lang.permissions.access} {props.app.organisation.name} {props.lang.permissions.to}:
+        {props.lang.site.permissions.access} {props.app.organisation.name}{" "}
+        {props.lang.site.permissions.to}:
       </OAuthPermissionsMessage>
       <OAuthPermissionsPermissionsWrapper>
         {props.app.permissions.map((permission) => (
@@ -20,7 +21,11 @@ export const OAuthPermissions: React.FC<OAuthPermissionsProps> = (props) => {
             key={permission.id}
             title={permission.name}
           >
-            {permission.description}
+            {
+              props.lang.permissions.filter(
+                (item) => item.id === permission.id
+              )[0].description
+            }
           </OAuthPermissionsPermission>
         ))}
       </OAuthPermissionsPermissionsWrapper>
