@@ -63,6 +63,11 @@ export const OAuthHeaderMessage = styled.h2`
   margin: 0 0 0 10px 0;
 `;
 
+export const OAuthUser = styled.span`
+  font-size: 0.85rem;
+  opacity: 0.8;
+`
+
 export const OAuthOrSignOutMessage = styled.h3`
   font-size: 0.9rem;
   color: ${secondaryDark};

@@ -1,15 +1,15 @@
 import { OAuthInfoItem, OAuthInfoItems, OAuthInfoWrapper } from "./OAuthInfo.styled";
 
+import { OAuthInfoProps } from "./OAuthInfo.types";
 import React from "react";
-import { XilerOAuth } from "../XilerAccounts/Organisation.types";
 
-export const OAuthInfo: React.FC<XilerOAuth> = (props) => {
+export const OAuthInfo: React.FC<OAuthInfoProps> = (props) => {
   return (
     <OAuthInfoWrapper>
       <OAuthInfoItems>
-          <OAuthInfoItem>Once you authorize, you will be redirected to: {props.redirect.target}</OAuthInfoItem>
-          <OAuthInfoItem>Organisation exists since {props.organisation.createdAt.toLocaleDateString()}</OAuthInfoItem>
-          <OAuthInfoItem>This organisation can not access any private information like your password or your street adress.</OAuthInfoItem>
+          <OAuthInfoItem>{props.lang.info.authorize} {props.oauth.redirect.target}</OAuthInfoItem>
+          <OAuthInfoItem>{props.lang.info.exists} {props.oauth.organisation.createdAt.toLocaleDateString()}</OAuthInfoItem>
+          <OAuthInfoItem>{props.lang.info.information}</OAuthInfoItem>
       </OAuthInfoItems>
     </OAuthInfoWrapper>
   );

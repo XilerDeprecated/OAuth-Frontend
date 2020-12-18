@@ -6,6 +6,7 @@ import {
   OAuthHeaderWrapper,
   OAuthOrSignOutMessage,
   OAuthSignOut,
+  OAuthUser,
 } from "./OAuthHeader.styled";
 
 import { OAuthHeaderProps } from "./OAuthHeader.types";
@@ -23,16 +24,16 @@ export const OAuthHeader: React.FC<OAuthHeaderProps> = (props) => {
       <OAuthHeaderOrganization>
         {props.oauth.organisation.name}
       </OAuthHeaderOrganization>
-      <OAuthHeaderMessage>wants to access your account</OAuthHeaderMessage>
+      <OAuthHeaderMessage>{props.lang.header.accessMessage} <OAuthUser>({props.user.firstName} {props.user.lastName})</OAuthUser></OAuthHeaderMessage>
       <OAuthOrSignOutMessage>
-        Or{" "}
+        {props.lang.header.or}{" "}
         <OAuthSignOut
           onClick={() => {
             deleteCookie("token");
             window.location.href = `/signin/${props.oauth.organisation.id}/${props.oauth.app.id}/${props.oauth.redirect.id}`;
           }}
         >
-          sign in with another account
+          {props.lang.header.otherAccount}
         </OAuthSignOut>
       </OAuthOrSignOutMessage>
     </OAuthHeaderWrapper>

@@ -1,7 +1,8 @@
 import { OAuthMenuAuthorize, OAuthMenuCancel, OAuthMenuWrapper } from "./OAuthMenu.styled";
-import { XilerApp, XilerOAuth } from "../XilerAccounts/Organisation.types";
 
+import { OAuthMenuProps } from "./OAuthMenu.types";
 import React from "react";
+import { XilerApp } from "../XilerAccounts/Organisation.types";
 
 const getAuthToken = (app: XilerApp) => {
     // TODO: FETCH DATA FROM API HERE
@@ -9,13 +10,13 @@ const getAuthToken = (app: XilerApp) => {
     return app.organisation.id + app.id + app.permissions.map((i) => i.id).join("");
 }
 
-export const OAuthMenu: React.FC<XilerOAuth> = (props) => {
-  const url = props.redirect.target.endsWith("/") ? props.redirect.target : props.redirect.target + "/";
+export const OAuthMenu: React.FC<OAuthMenuProps> = (props) => {
+  const url = props.oauth.redirect.target.endsWith("/") ? props.oauth.redirect.target : props.oauth.redirect.target + "/";
 
   return (
     <OAuthMenuWrapper>
-      <OAuthMenuCancel href={`${url}?code=499`}>Cancel</OAuthMenuCancel>
-      <OAuthMenuAuthorize onClick={() => window.location.href = `${url}?code=${getAuthToken(props.app)}`}>Authorize</OAuthMenuAuthorize>
+      <OAuthMenuCancel href={`${url}?code=499`}>{props.lang.menu.cancel}</OAuthMenuCancel>
+      <OAuthMenuAuthorize onClick={() => window.location.href = `${url}?code=${getAuthToken(props.oauth.app)}`}>{props.lang.menu.authorize}</OAuthMenuAuthorize>
     </OAuthMenuWrapper>
   );
 };

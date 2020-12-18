@@ -18,6 +18,7 @@ import { OAuthUrlParams } from "../OAuth.types";
 import React from "react";
 import { Seo } from "../../Seo.comp";
 import { XilerAccount } from "../XilerAccounts/Account.types";
+import { getLanguage } from "../../../utils/language";
 
 const organisation: XilerOrganisation = {
   id: "xiler",
@@ -65,26 +66,28 @@ export const OAuthContent: React.FC<OAuthUrlParams> = (props) => {
     redirect,
   };
 
+  let l = getLanguage(props.lang);
+
   // {props.organisation} {props.id} {props.redirect}
 
   return (
     <React.Fragment>
       <Seo
         color="#2BBADE"
-        description={`Authorize ${OAuthData.organisation.name} to access your Xiler account. This will allow them to see your ${OAuthData.app.permissions.map(permission => permission.name).join(", ")}.`}
-        title={`Xiler - Authorize ${OAuthData.organisation.name}`}
+        description={`${l.helmet.description.authorize} ${OAuthData.organisation.name} ${l.helmet.description.allowed} ${OAuthData.app.permissions.map(permission => permission.name).join(", ")}.`}
+        title={`${l.helmet.title} ${OAuthData.organisation.name}`}
         image={OAuthData.organisation.avatar}
-        imageAlt={`${OAuthData.organisation.avatar} its Xiler avatar`}
+        imageAlt={`${OAuthData.organisation.avatar} ${l.helmet.avatarAlt}`}
       />
       <OAuthContentOuterWrapper>
         <OAuthContentWrapper>
-          <OAuthHeader user={user} oauth={OAuthData} />
+          <OAuthHeader lang={l} user={user} oauth={OAuthData} />
           <OAuthSectionSeperator />
-          <OAuthPermissions {...OAuthData.app} />
+          <OAuthPermissions lang={l} app={OAuthData.app} />
           <OAuthSectionSeperator />
-          <OAuthInfo {...OAuthData} />
+          <OAuthInfo lang={l} oauth={OAuthData} />
           <OAuthSectionSeperator />
-          <OAuthMenu {...OAuthData} />
+          <OAuthMenu lang={l} oauth={OAuthData} />
         </OAuthContentWrapper>
       </OAuthContentOuterWrapper>
     </React.Fragment>

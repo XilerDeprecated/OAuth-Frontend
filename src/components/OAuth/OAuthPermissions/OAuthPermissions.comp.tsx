@@ -5,17 +5,17 @@ import {
   OAuthPermissionsWrapper,
 } from "./OAuthPermissions.styled";
 
+import { OAuthPermissionsProps } from "./OAuthPermissions.types";
 import React from "react";
-import { XilerApp } from "../XilerAccounts/Organisation.types";
 
-export const OAuthPermissions: React.FC<XilerApp> = (props) => {
+export const OAuthPermissions: React.FC<OAuthPermissionsProps> = (props) => {
   return (
     <OAuthPermissionsWrapper>
       <OAuthPermissionsMessage>
-        This will allow {props.organisation.name} to:
+        {props.lang.permissions.access} {props.app.organisation.name} {props.lang.permissions.to}:
       </OAuthPermissionsMessage>
       <OAuthPermissionsPermissionsWrapper>
-        {props.permissions.map((permission) => (
+        {props.app.permissions.map((permission) => (
           <OAuthPermissionsPermission
             key={permission.id}
             title={permission.name}
