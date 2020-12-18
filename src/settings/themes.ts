@@ -16,6 +16,10 @@ export const secondaryDark = theme("mode", {
     light: "#46494c"
 })
 
+export const accentLight = theme("mode", {
+  light: "#3dc0e1",
+});
+
 export const accent = theme("mode", {
   light: "#2bbade",
 });

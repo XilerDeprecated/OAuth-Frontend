@@ -78,7 +78,7 @@ export const OAuthContent: React.FC<OAuthUrlParams> = (props) => {
       />
       <OAuthContentOuterWrapper>
         <OAuthContentWrapper>
-          <OAuthHeader user={user} organization={OAuthData.organisation} />
+          <OAuthHeader user={user} oauth={OAuthData} />
           <OAuthSectionSeperator />
           <OAuthPermissions {...OAuthData.app} />
           <OAuthSectionSeperator />

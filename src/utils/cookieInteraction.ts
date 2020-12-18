@@ -3,7 +3,7 @@ export const setCookie = (cname: string, cvalue: string, exdays: number) => {
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
   const expires = "expires=" + d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
+};
 
 export const getCookie = (cname: string) => {
   const name = cname + "=";
@@ -19,4 +19,9 @@ export const getCookie = (cname: string) => {
     }
   }
   return undefined;
-}
+};
+
+export const deleteCookie = (cname: string) => {
+  console.log(cname);
+  document.cookie = `${cname}= ; expires = Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+};

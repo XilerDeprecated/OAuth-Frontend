@@ -6,6 +6,4 @@ export const OAuthSectionSeperator = styled.div`
   height: 1px;
   width: 80%;
   opacity: 0.25;
-
-  /* border-bottom: 1px solid ${secondaryDark}; */
 `;

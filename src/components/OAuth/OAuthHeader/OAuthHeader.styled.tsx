@@ -1,3 +1,5 @@
+import { accentDark, accentLight, secondaryDark } from "../../../settings/themes";
+
 import styled from "styled-components";
 
 export const OAuthHeaderWrapper = styled.section`
@@ -59,4 +61,26 @@ export const OAuthHeaderMessage = styled.h2`
   font-weight: 400;
   opacity: 0.75;
   margin: 0 0 0 10px 0;
+`;
+
+export const OAuthOrSignOutMessage = styled.h3`
+  font-size: 0.9rem;
+  color: ${secondaryDark};
+`;
+
+export const OAuthSignOut = styled.button`
+  font-size: 0.9rem;
+  color: ${accentLight};
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    color: ${accentDark};
+  }
 `;
