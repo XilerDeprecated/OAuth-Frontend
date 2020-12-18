@@ -13,6 +13,10 @@ export const OAuthLanguageNavigationWrapper = styled.section`
   border-radius: 5px;
 
   overflow: hidden;
+
+  user-select: none;
+  
+  cursor: pointer;
 `;
 
 export const OAuthLanguageNavigationActiveWrapper = styled.div`
@@ -24,8 +28,6 @@ export const OAuthLanguageNavigationActiveWrapper = styled.div`
 
   align-items: center;
   justify-items: center;
-
-  z-index: 3;
 `;
 
 export const OAuthLanguageNavigationLanguagesWrapper = styled.div`
