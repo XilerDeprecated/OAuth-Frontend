@@ -13,7 +13,7 @@ export const AuthorizePage: React.FC = () => {
 
   if (token === undefined || token?.trim().length === 0)
     history.push(
-      `/signin/${params.organisation}/${params.id}/${params.redirect}`
+      `/auth/signin/${params.organisation}/${params.id}/${params.redirect}`
     );
 
   return (

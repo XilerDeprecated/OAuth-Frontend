@@ -24,7 +24,7 @@ const App = () => {
       <Switch>
         <Route
           exact
-          path="/:organisation/:id/:redirect"
+          path="/oauth/:organisation/:id/:redirect"
           render={() =>
             getComponentWithLayout(
               AuthorizePage,
@@ -34,15 +34,15 @@ const App = () => {
         />
         <Route
           exact
-          path="/signin/:organisation/:id/:redirect"
+          path="/oauth/signin/:organisation/:id/:redirect"
           component={SignInRedirector}
         />
         <Route
           exact
-          path="/account"
+          path="/oauth/account"
           render={() => (window.location.href = "http://accounts.xiler.net")}
         />
-        <Redirect to="/account" />
+        <Redirect to="/oauth/account" />
       </Switch>
     </Router>
   );
