@@ -1,10 +1,11 @@
+import React, { lazy } from "react";
 import { Redirect, Route, Router, Switch } from "react-router-dom";
 
-import { AuthorizePage } from "./pages";
 import { DefaultLayout } from "./layouts/DefaultLayout/DefaultLayout.comp";
-import React from "react";
 import { SignInRedirector } from "./components/SignInRedirector/SignInRedirector.comp";
 import { history } from "./utils/history";
+
+const AuthorizePage = lazy(() => import("./pages/index"));
 
 const getComponentWithLayout = (
   Component: React.FC,

@@ -6,7 +6,7 @@ import { getCookie } from "../utils/cookieInteraction";
 import { history } from "../utils/history";
 import { useParams } from "react-router-dom";
 
-export const AuthorizePage: React.FC = () => {
+const AuthorizePage: React.FC = () => {
   let params = useParams<OAuthUrlParams>();
 
   const token = getCookie("token");
@@ -23,3 +23,5 @@ export const AuthorizePage: React.FC = () => {
     </React.Fragment>
   );
 };
+
+export default AuthorizePage;
