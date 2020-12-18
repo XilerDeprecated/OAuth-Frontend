@@ -1,7 +1,7 @@
 import theme from "styled-theming";
 
 export const primary = theme("mode", {
-  light: "#fff",
+  light: "#ffffff",
 });
 
 export const primaryDark = theme("mode", {

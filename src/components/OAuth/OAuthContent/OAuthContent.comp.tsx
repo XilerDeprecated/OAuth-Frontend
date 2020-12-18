@@ -1,16 +1,18 @@
 import {
   OAuthContentOuterWrapper,
-  OAuthContentWrapper,
+  OAuthContentWrapper
 } from "./OAuthContent.styled";
 import {
   XilerApp,
   XilerOAuth,
   XilerOAuthRedirect,
-  XilerOrganisation,
+  XilerOrganisation
 } from "../XilerAccounts/Organisation.types";
+import { getLanguages, getSiteLanguage } from "../../../utils/language";
 
 import { OAuthHeader } from "../OAuthHeader/OAuthHeader.comp";
 import { OAuthInfo } from "../OAuthInfo/OAuthInfo.comp";
+import { OAuthLanguageNavigation } from "../OAuthLanguageNavigation/OAuthLanguageNavigation.comp";
 import { OAuthMenu } from "../OAuthMenu/OAuthMenu.comp";
 import { OAuthPermissions } from "../OAuthPermissions/OAuthPermissions.comp";
 import { OAuthSectionSeperator } from "../OAuth.styled";
@@ -18,7 +20,7 @@ import { OAuthUrlParams } from "../OAuth.types";
 import React from "react";
 import { Seo } from "../../Seo.comp";
 import { XilerAccount } from "../XilerAccounts/Account.types";
-import { getLanguage } from "../../../utils/language";
+import { lang } from "../../../lang/oauth";
 
 const organisation: XilerOrganisation = {
   id: "xiler",
@@ -66,7 +68,7 @@ export const OAuthContent: React.FC<OAuthUrlParams> = (props) => {
     redirect,
   };
 
-  let l = getLanguage(props.lang);
+  let l = getSiteLanguage(props.lang);
 
   // {props.organisation} {props.id} {props.redirect}
 
@@ -74,7 +76,11 @@ export const OAuthContent: React.FC<OAuthUrlParams> = (props) => {
     <React.Fragment>
       <Seo
         color="#2BBADE"
-        description={`${l.helmet.description.authorize} ${OAuthData.organisation.name} ${l.helmet.description.allowed} ${OAuthData.app.permissions.map(permission => permission.name).join(", ")}.`}
+        description={`${l.helmet.description.authorize} ${
+          OAuthData.organisation.name
+        } ${l.helmet.description.allowed} ${OAuthData.app.permissions
+          .map((permission) => permission.name)
+          .join(", ")}.`}
         title={`${l.helmet.title} ${OAuthData.organisation.name}`}
         image={OAuthData.organisation.avatar}
         imageAlt={`${OAuthData.organisation.avatar} ${l.helmet.avatarAlt}`}
@@ -90,6 +96,7 @@ export const OAuthContent: React.FC<OAuthUrlParams> = (props) => {
           <OAuthMenu lang={l} oauth={OAuthData} />
         </OAuthContentWrapper>
       </OAuthContentOuterWrapper>
+      <OAuthLanguageNavigation lang={l} oauth={OAuthData} languages={getLanguages(lang, l)} />
     </React.Fragment>
   );
 };

@@ -1,4 +1,7 @@
 export interface OAuthLangType {
+  icon: string;
+  tag: string;
+
   helmet: {
     description: {
       authorize: string;
@@ -32,7 +35,7 @@ export interface OAuthLangType {
   };
 }
 
-interface OAuthLang {
+export interface OAuthLang {
   en: OAuthLangType;
   fr: OAuthLangType;
   nl: OAuthLangType;
@@ -40,6 +43,9 @@ interface OAuthLang {
 
 export const lang: OAuthLang = {
   en: {
+    icon: "/assets/languages/us-uk.png",
+    tag: "en",
+
     helmet: {
       description: {
         authorize: "Authorize",
@@ -76,6 +82,9 @@ export const lang: OAuthLang = {
   },
 
   fr: {
+    icon: "/assets/languages/fr.png",
+    tag: "fr",
+
     helmet: {
       description: {
         authorize: "Autoriser",
@@ -112,6 +121,9 @@ export const lang: OAuthLang = {
   },
 
   nl: {
+    icon: "/assets/languages/nl-be.png",
+    tag: "nl",
+
     helmet: {
       description: {
         authorize: "Machtig",

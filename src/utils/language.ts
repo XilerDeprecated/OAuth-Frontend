@@ -1,4 +1,7 @@
-import { OAuthLangType, lang } from "../lang/oauth";
+import { OAuthLang, OAuthLangType, lang } from "../lang/oauth";
+import { getCookie, setCookie } from './cookieInteraction';
+
+import { SimpleLanguage } from "../components/OAuth/OAuthLanguageNavigation/OAuthLanguageNavigation.types";
 
 export const getLanguage = (val: string | undefined) => {
   let language: OAuthLangType;
@@ -24,3 +27,24 @@ export const getLanguage = (val: string | undefined) => {
 
   return language;
 };
+
+export const getLanguages = (lang: OAuthLang, active: OAuthLangType): SimpleLanguage[] => {
+  return Object.keys(lang)
+    .filter((name) => name !== active.tag)
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .map((key) => ({
+      id: key,
+      icon: getLanguage(key).icon,
+    }));
+};
+
+export const getSiteLanguage = (val: string | undefined) => {
+  if (val === undefined) {
+    const cookieLang = getCookie("language");
+    return cookieLang === undefined ? getLanguage("en") : getLanguage(cookieLang);
+  }
+
+  const urlLang = getLanguage(val);
+  setCookie("language", urlLang.tag, 365 * 5);
+  return urlLang;
+}
