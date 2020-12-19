@@ -80,7 +80,7 @@ export const lang: OAuthLang = {
         authorize: "Once you authorize, you will be redirected to:",
         exists: "Organisation exists since",
         information:
-          "This organisation can not access any private information like your password or your physical adress.",
+          "This organisation can not access any private information like your password or your physical adress",
       },
 
       menu: {
@@ -133,7 +133,7 @@ export const lang: OAuthLang = {
           "Une fois que vous aurez donné votre autorisation, vous serez redirigé vers",
         exists: "L'organisation existe depuis",
         information:
-          "Cette organisation ne peut accéder à aucune information privée comme votre mot de passe ou votre adresse physique.",
+          "Cette organisation ne peut accéder à aucune information privée comme votre mot de passe ou votre adresse physique",
       },
 
       menu: {
@@ -185,7 +185,7 @@ export const lang: OAuthLang = {
         authorize: "Zodra u toestemming geeft, wordt u doorgestuurd naar:",
         exists: "Deze organisatie bestaat sinds",
         information:
-          "Deze organisatie heeft geen toegang tot privé-informatie zoals uw wachtwoord of uw fysieke adres.",
+          "Deze organisatie heeft geen toegang tot privé-informatie zoals uw wachtwoord of uw fysieke adres",
       },
 
       menu: {
