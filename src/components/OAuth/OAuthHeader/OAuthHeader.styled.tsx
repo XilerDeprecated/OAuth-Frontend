@@ -9,7 +9,6 @@ export const OAuthHeaderWrapper = styled.section`
   justify-content: center;
   align-items: center;
 
-  width: 460px;
   max-width: 100%;
 `;
 
@@ -54,6 +53,7 @@ export const OAuthHeaderOrganization = styled.h1`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
 `;
 
 export const OAuthHeaderMessage = styled.h2`
@@ -61,6 +61,7 @@ export const OAuthHeaderMessage = styled.h2`
   font-weight: 400;
   opacity: 0.75;
   margin: 0 0 0 10px 0;
+  text-align: center;
 `;
 
 export const OAuthUser = styled.span`
@@ -71,6 +72,7 @@ export const OAuthUser = styled.span`
 export const OAuthOrSignOutMessage = styled.h3`
   font-size: 0.9rem;
   color: ${secondaryDark};
+  text-align: center;
 `;
 
 export const OAuthSignOut = styled.button`

@@ -16,6 +16,8 @@ export const OAuthContentOuterWrapper = styled.div`
 `;
 
 export const OAuthContentWrapper = styled.main`
+  position: relative;
+
   background-color: ${primary};
   border-radius: 7px;
 

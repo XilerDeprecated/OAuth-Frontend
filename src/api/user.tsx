@@ -27,8 +27,6 @@ export class User implements UserAttributes {
 
   private fetchUser(): XilerAccount {
     // TODO: Perform API request here to fetch the user.
-    console.log(this._token);
-
     return {
       id: "1ndta1RGxQvl724qSKP2UQPoG8JayXv7",
       firstName: "Arthur",
