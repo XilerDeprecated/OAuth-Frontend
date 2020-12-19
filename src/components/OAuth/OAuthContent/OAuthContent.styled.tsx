@@ -3,7 +3,7 @@ import { primary, secondary, secondaryDark } from "../../../settings/themes";
 import styled from "styled-components";
 
 export const OAuthContentOuterWrapper = styled.div`
-  width: 100vw;
+  width: 100%;
   min-height: calc(100vh - 70px);
   margin: 10px 0 60px 0;
 

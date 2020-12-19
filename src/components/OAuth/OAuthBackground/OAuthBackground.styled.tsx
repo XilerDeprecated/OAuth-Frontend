@@ -5,7 +5,7 @@ export const OAuthBackgroundWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   z-index: -10;
   background-color: ${primary};
