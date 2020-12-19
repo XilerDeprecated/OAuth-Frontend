@@ -19,12 +19,12 @@ export const OAuthHeader: React.FC<OAuthHeaderProps> = (props) => {
       <OAuthHeaderImageWrapper>
         <OAuthHeaderImage src={props.oauth.organisation.avatar} />
         <p>•••</p>
-        <OAuthHeaderImage src={props.user.avatar} />
+        <OAuthHeaderImage src={props.user!.avatar} />
       </OAuthHeaderImageWrapper>
       <OAuthHeaderOrganization>
         {props.oauth.organisation.name}
       </OAuthHeaderOrganization>
-      <OAuthHeaderMessage>{props.lang.site.header.accessMessage} <OAuthUser>({props.user.firstName} {props.user.lastName})</OAuthUser></OAuthHeaderMessage>
+      <OAuthHeaderMessage>{props.lang.site.header.accessMessage} <OAuthUser>({props.user!.firstName} {props.user!.lastName})</OAuthUser></OAuthHeaderMessage>
       <OAuthOrSignOutMessage>
         {props.lang.site.header.or}{" "}
         <OAuthSignOut

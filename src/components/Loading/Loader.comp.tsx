@@ -1,8 +1,9 @@
 import {
-    BackgroundSpinner,
-    LoaderWrapper,
-    SpinnerWrapper,
-    Text
+  BackgroundSpinner,
+  LoaderWrapper,
+  SpinnerWrapper,
+  Text,
+  TextWrapper,
 } from "./Loader.styled";
 
 import { LoaderProps } from "./Loader.types";
@@ -10,7 +11,10 @@ import React from "react";
 
 export const Loader: React.FC<LoaderProps> = (props) => (
   <LoaderWrapper>
-    <Text>{props.message || "Loading..."}</Text>
+    <TextWrapper>
+      <Text>{props.message || "Loading..."}</Text>
+      {props.children}
+    </TextWrapper>
     <SpinnerWrapper>
       <BackgroundSpinner size="45vw" />
       <BackgroundSpinner size="55vw" />

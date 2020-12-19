@@ -25,7 +25,7 @@ const App = () => {
       <Switch>
         <Route
           exact
-          path="/:lang?/:organisation/:id/:redirect"
+          path="/:lang?/:organisation/:app/:redirect"
           render={() =>
             getComponentWithLayout(
               AuthorizePage,

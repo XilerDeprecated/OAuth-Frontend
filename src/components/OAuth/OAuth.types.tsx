@@ -1,6 +1,8 @@
+import { User } from "../../api/user";
+
 export interface OAuthUrlParams {
     lang?: string;
     organisation: string;
-    id: string;
+    app: string;
     redirect: string;
 }

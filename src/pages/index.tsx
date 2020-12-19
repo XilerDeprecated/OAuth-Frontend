@@ -1,7 +1,8 @@
-import { OAuthBackground } from "../components/OAuth/OAuthBackground/OAuthBackground.comp";
+import { Loader } from "../components/Loading/Loader.comp";
 import { OAuthContent } from "../components/OAuth/OAuthContent/OAuthContent.comp";
 import { OAuthUrlParams } from "../components/OAuth/OAuth.types";
 import React from "react";
+import { User } from "../api/user";
 import { getCookie } from "../utils/cookieInteraction";
 import { history } from "../utils/history";
 import { useParams } from "react-router-dom";
@@ -11,16 +12,20 @@ const AuthorizePage: React.FC = () => {
 
   const token = getCookie("token");
 
-  if (token === undefined || token?.trim().length === 0)
-    history.push(
-      `/signin/${params.organisation}/${params.id}/${params.redirect}`
-    );
+  const url = `/signin/${params.organisation}/${params.app}/${params.redirect}`;
+
+  if (token === undefined || token?.trim().length === 0) history.push(url);
+  else {
+    return <OAuthContent url={params} user={new User(token)} />;
+  }
 
   return (
-    <React.Fragment>
-      <OAuthContent {...params} />
-      <OAuthBackground />
-    </React.Fragment>
+    <Loader message="Oops...">
+      <p>Something went wrong while trying to reconnect you.</p>
+      <p>
+        Please click <a href={url}>here</a> to sign in!
+      </p>
+    </Loader>
   );
 };
 

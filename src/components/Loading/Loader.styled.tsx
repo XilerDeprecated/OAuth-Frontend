@@ -1,4 +1,4 @@
-import { accent, primary, secondaryDark } from "../../settings/themes";
+import { accent, accentLight, primary, secondaryDark } from "../../settings/themes";
 import styled, { keyframes } from "styled-components";
 
 import { LoaderAnimationProps } from "./Loader.types";
@@ -9,8 +9,6 @@ export const LoaderWrapper = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${primary};
-  z-index: -2;
   overflow: hidden;
 `;
 
@@ -23,9 +21,23 @@ const LoaderAnimation = keyframes`
 `;
 
 export const Text = styled.h1`
-  position: absolute;
   font-size: 2rem;
+`;
+
+export const TextWrapper = styled.div`
+  position: absolute;
   color: ${secondaryDark};
+  text-align: center;
+  z-index: 10;
+
+  a {
+    color: ${accent};
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export const SpinnerWrapper = styled.div`

@@ -1,72 +1,35 @@
 import {
   OAuthContentOuterWrapper,
-  OAuthContentWrapper
+  OAuthContentWrapper,
 } from "./OAuthContent.styled";
-import {
-  XilerApp,
-  XilerOAuth,
-  XilerOAuthRedirect,
-  XilerOrganisation
-} from "../XilerAccounts/Organisation.types";
 import { getLanguages, getSiteLanguage } from "../../../utils/language";
 
+import { Loader } from "../../Loading/Loader.comp";
+import { OAuthBackground } from "../OAuthBackground/OAuthBackground.comp";
+import { OAuthContentProps } from "./OAuthContent.types";
 import { OAuthHeader } from "../OAuthHeader/OAuthHeader.comp";
 import { OAuthInfo } from "../OAuthInfo/OAuthInfo.comp";
 import { OAuthLanguageNavigation } from "../OAuthLanguageNavigation/OAuthLanguageNavigation.comp";
 import { OAuthMenu } from "../OAuthMenu/OAuthMenu.comp";
 import { OAuthPermissions } from "../OAuthPermissions/OAuthPermissions.comp";
 import { OAuthSectionSeperator } from "../OAuth.styled";
-import { OAuthUrlParams } from "../OAuth.types";
 import React from "react";
 import { Seo } from "../../Seo.comp";
-import { XilerAccount } from "../XilerAccounts/Account.types";
+import { getOAuthData } from "../../../api/oauth";
 import { lang } from "../../../lang/oauth";
 
-const organisation: XilerOrganisation = {
-  id: "xiler",
-  name: "Xiler Network",
-  avatar: "https://avatars2.githubusercontent.com/u/75951685",
-  createdAt: new Date(2019, 5, 10),
-};
-
-const app: XilerApp = {
-  id: "ceSLYWm2cXt5yiQO",
-  organisation,
-  permissions: [
-    {
-      id: 1,
-      name: "email",
-    },
-    {
-      id: 2,
-      name: "connections",
-    },
-  ],
-};
-
-const redirect: XilerOAuthRedirect = {
-  id: "LEt14JVLFVKFtTvT",
-  target: "https://www.xiler.net/",
-};
-
-const user: XilerAccount = {
-  id: "1ndta1RGxQvl724qSKP2UQPoG8JayXv7",
-  firstName: "Arthur",
-  lastName: "De Witte",
-  mail: "mail@arthurdw.com",
-  avatar: "https://avatars3.githubusercontent.com/u/38541241",
-};
-
-export const OAuthContent: React.FC<OAuthUrlParams> = (props) => {
+export const OAuthContent: React.FC<OAuthContentProps> = (props) => {
   // TODO: FETCH DATA FROM API HERE
 
-  const OAuthData: XilerOAuth = {
-    organisation,
-    app,
-    redirect,
-  };
+  const OAuthData = getOAuthData(
+    props.url.organisation,
+    props.url.app,
+    props.url.redirect
+  );
 
-  let l = getSiteLanguage(props.lang);
+  if (OAuthData === undefined) return <Loader message="Invalid OAuth url!"></Loader>
+
+  let l = getSiteLanguage(props.user, props.url.lang);
 
   // {props.organisation} {props.id} {props.redirect}
 
@@ -85,7 +48,7 @@ export const OAuthContent: React.FC<OAuthUrlParams> = (props) => {
       />
       <OAuthContentOuterWrapper>
         <OAuthContentWrapper>
-          <OAuthHeader lang={l} user={user} oauth={OAuthData} />
+          <OAuthHeader lang={l} user={props.user.user} oauth={OAuthData} />
           <OAuthSectionSeperator />
           <OAuthPermissions lang={l} app={OAuthData.app} />
           <OAuthSectionSeperator />
@@ -94,7 +57,13 @@ export const OAuthContent: React.FC<OAuthUrlParams> = (props) => {
           <OAuthMenu lang={l} oauth={OAuthData} />
         </OAuthContentWrapper>
       </OAuthContentOuterWrapper>
-      <OAuthLanguageNavigation lang={l} oauth={OAuthData} languages={getLanguages(lang, l)} />
+      <OAuthLanguageNavigation
+        lang={l}
+        oauth={OAuthData}
+        languages={getLanguages(lang, l)}
+      />
+      
+      <OAuthBackground />
     </React.Fragment>
   );
 };

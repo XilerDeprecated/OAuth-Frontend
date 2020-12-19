@@ -2,6 +2,8 @@ import { OAuthLang, OAuthLangType, lang } from "../lang/oauth";
 import { getCookie, setCookie } from './cookieInteraction';
 
 import { SimpleLanguage } from "../components/OAuth/OAuthLanguageNavigation/OAuthLanguageNavigation.types";
+import { User } from "../api/user";
+import { XilerAccount } from "../components/OAuth/XilerAccounts/Account.types";
 
 export const getLanguage = (val: string | undefined) => {
   let language: OAuthLangType;
@@ -38,7 +40,7 @@ export const getLanguages = (lang: OAuthLang, active: OAuthLangType): SimpleLang
     }));
 };
 
-export const getSiteLanguage = (val: string | undefined) => {
+export const getSiteLanguage = (user: User, val: string | undefined) => {
   if (val === undefined) {
     const cookieLang = getCookie("language");
     return cookieLang === undefined ? getLanguage("en") : getLanguage(cookieLang);
@@ -46,5 +48,6 @@ export const getSiteLanguage = (val: string | undefined) => {
 
   const urlLang = getLanguage(val);
   setCookie("language", urlLang.tag, 365 * 5);
+  user.language = urlLang.tag;
   return urlLang;
 }

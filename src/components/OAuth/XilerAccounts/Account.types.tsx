@@ -4,4 +4,5 @@ export interface XilerAccount {
     lastName: string;
     mail: string;
     avatar: string
+    lang: string;
 }
