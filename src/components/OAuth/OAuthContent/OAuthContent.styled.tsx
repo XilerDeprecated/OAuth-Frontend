@@ -4,7 +4,8 @@ import styled from "styled-components";
 
 export const OAuthContentOuterWrapper = styled.div`
   width: 100vw;
-  height: 100vh;
+  min-height: calc(100vh - 70px);
+  margin: 10px 0 60px 0;
 
   display: flex;
   align-items: center;

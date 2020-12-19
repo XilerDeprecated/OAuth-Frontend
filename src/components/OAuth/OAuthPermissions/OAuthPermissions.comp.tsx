@@ -28,6 +28,79 @@ export const OAuthPermissions: React.FC<OAuthPermissionsProps> = (props) => {
             }
           </OAuthPermissionsPermission>
         ))}
+
+        {props.app.permissions.map((permission) => (
+          <OAuthPermissionsPermission
+            key={permission.id}
+            title={permission.name}
+          >
+            {
+              props.lang.permissions.filter(
+                (item) => item.id === permission.id
+              )[0].description
+            }
+          </OAuthPermissionsPermission>
+        ))}
+        {props.app.permissions.map((permission) => (
+          <OAuthPermissionsPermission
+            key={permission.id}
+            title={permission.name}
+          >
+            {
+              props.lang.permissions.filter(
+                (item) => item.id === permission.id
+              )[0].description
+            }
+          </OAuthPermissionsPermission>
+        ))}
+        {props.app.permissions.map((permission) => (
+          <OAuthPermissionsPermission
+            key={permission.id}
+            title={permission.name}
+          >
+            {
+              props.lang.permissions.filter(
+                (item) => item.id === permission.id
+              )[0].description
+            }
+          </OAuthPermissionsPermission>
+        ))}
+        {props.app.permissions.map((permission) => (
+          <OAuthPermissionsPermission
+            key={permission.id}
+            title={permission.name}
+          >
+            {
+              props.lang.permissions.filter(
+                (item) => item.id === permission.id
+              )[0].description
+            }
+          </OAuthPermissionsPermission>
+        ))}
+        {props.app.permissions.map((permission) => (
+          <OAuthPermissionsPermission
+            key={permission.id}
+            title={permission.name}
+          >
+            {
+              props.lang.permissions.filter(
+                (item) => item.id === permission.id
+              )[0].description
+            }
+          </OAuthPermissionsPermission>
+        ))}
+        {props.app.permissions.map((permission) => (
+          <OAuthPermissionsPermission
+            key={permission.id}
+            title={permission.name}
+          >
+            {
+              props.lang.permissions.filter(
+                (item) => item.id === permission.id
+              )[0].description
+            }
+          </OAuthPermissionsPermission>
+        ))}
       </OAuthPermissionsPermissionsWrapper>
     </OAuthPermissionsWrapper>
   );

@@ -3,17 +3,22 @@ import { accent, accentDark, primary, primaryDark, secondaryDark } from "../../.
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+export const OAuthLanguageOutterWrapper = styled.div`
+  position: relative;
+`
+
 export const OAuthLanguageNavigationWrapper = styled.section`
   position: absolute;
-  bottom: 10px;
   left: 10px;
+  bottom: 10px;
 
   background-color: ${primaryDark};
   padding: 5px 7px;
   border-radius: 5px;
 
-  overflow: hidden;
+  width: fit-content;
 
+  overflow: hidden;
   user-select: none;
   
   cursor: pointer;
