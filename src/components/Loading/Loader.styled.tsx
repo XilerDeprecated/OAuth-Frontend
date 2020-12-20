@@ -1,4 +1,4 @@
-import { accent, accentLight, primary, secondaryDark } from "../../settings/themes";
+import { accent, primary, secondaryDark } from "../../settings/themes";
 import styled, { keyframes } from "styled-components";
 
 import { LoaderAnimationProps } from "./Loader.types";

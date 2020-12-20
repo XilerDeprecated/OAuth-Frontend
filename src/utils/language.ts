@@ -3,7 +3,6 @@ import { getCookie, setCookie } from './cookieInteraction';
 
 import { SimpleLanguage } from "../components/OAuth/OAuthLanguageNavigation/OAuthLanguageNavigation.types";
 import { User } from "../api/user";
-import { XilerAccount } from "../components/OAuth/XilerAccounts/Account.types";
 
 export const getLanguage = (val: string | undefined) => {
   let language: OAuthLangType;
