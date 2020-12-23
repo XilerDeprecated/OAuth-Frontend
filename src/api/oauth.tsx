@@ -5,6 +5,9 @@ import {
   XilerOrganisation,
 } from "../components/OAuth/XilerAccounts/Organisation.types";
 
+import axios from "axios";
+import { endpoints } from "../settings/endpoints";
+
 const organisation: XilerOrganisation = {
   id: "xiler",
   name: "Xiler Network",
@@ -36,17 +39,26 @@ export const getOAuthData = (
   organisationId: string,
   appId: string,
   redirectId: string
-): XilerOAuth | undefined => {
+): Promise<XilerOAuth> | undefined => {
   if (
     organisationId === organisation.id &&
     appId === app.id &&
     redirectId === redirect.id
   )
-    return {
+    return Promise.resolve({
       organisation,
       app,
       redirect,
-    };
+    });
 
   return undefined;
 };
+
+export const getCode = (app: string, token: string) =>
+  axios.post(
+    endpoints.base + endpoints.generate_code,
+    {
+      token: token,
+      app: app,
+    },
+  );

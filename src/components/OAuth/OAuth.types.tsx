@@ -4,3 +4,8 @@ export interface OAuthUrlParams {
     app: string;
     redirect: string;
 }
+
+export interface OAuthProps {
+    url: OAuthUrlParams;
+    token: string;
+}
