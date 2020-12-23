@@ -1,6 +1,6 @@
 import {
   OAuthContentOuterWrapper,
-  OAuthContentWrapper
+  OAuthContentWrapper,
 } from "./OAuthContent.styled";
 import { getLanguages, getSiteLanguage } from "../../../utils/language";
 
@@ -22,7 +22,8 @@ export const OAuthContent: React.FC<OAuthContentProps> = (props) => {
 
   // {props.organisation} {props.id} {props.redirect}
 
-  if (props.oauth === undefined) return <Loader message="Invalid OAuth url!"></Loader>
+  if (props.oauth === undefined)
+    return <Loader message="Invalid OAuth url!"></Loader>;
 
   return (
     <React.Fragment>
@@ -41,11 +42,7 @@ export const OAuthContent: React.FC<OAuthContentProps> = (props) => {
       />
       <OAuthContentOuterWrapper>
         <OAuthContentWrapper>
-          <OAuthHeader
-            lang={l}
-            user={props.user.user}
-            oauth={props.oauth}
-          />
+          <OAuthHeader lang={l} user={props.user.user} oauth={props.oauth} />
           <OAuthSectionSeperator />
           <OAuthPermissions lang={l} app={props.oauth.app} />
           <OAuthSectionSeperator />

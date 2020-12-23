@@ -9,36 +9,13 @@ import { useParams } from "react-router-dom";
 
 const AuthorizePage: React.FC = () => {
   let params = useParams<OAuthUrlParams>();
-  
+
   const token = getCookie(cookieNames.refresh_token);
-  
+
   const url = `/signin/${params.organisation}/${params.app}/${params.redirect}`;
-  
+
   if (token === undefined || token?.trim().length === 0) history.push(url);
-  else {
-    return <OAuth token={token} url={params} />
-    // TODO: FETCH DATA FROM API HERE
-    // return (
-    //   <Suspense fallback={<Loader />}>
-    //     {Promise.resolve(
-    //       getOAuthData(params.organisation, params.app, params.redirect)
-    //     ).then((OAuthData) => {
-    //       console.log(OAuthData);
-
-    //       if (OAuthData === undefined)
-    //         return <Loader message="Invalid OAuth url!"></Loader>;
-
-    //       return (
-    //         <OAuthContent
-    //           oauth={OAuthData}
-    //           url={params}
-    //           user={new User(token)}
-    //         />
-    //       );
-    //     })}
-    //   </Suspense>
-    // );
-  }
+  else return <OAuth token={token} url={params} />;
 
   return (
     <Loader message="Oops...">
