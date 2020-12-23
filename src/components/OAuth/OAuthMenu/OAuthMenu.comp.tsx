@@ -29,7 +29,7 @@ export const OAuthMenu: React.FC<OAuthMenuProps> = (props): JSX.Element => {
 
   return (
     <OAuthMenuWrapper>
-      <OAuthMenuCancel href={`${url}?status=1`}>
+      <OAuthMenuCancel href={`${url}?status=499`}>
         {props.lang.site.menu.cancel}
       </OAuthMenuCancel>
       <OAuthMenuAuthorize
