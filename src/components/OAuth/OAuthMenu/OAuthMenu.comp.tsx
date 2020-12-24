@@ -3,25 +3,39 @@ import {
   OAuthMenuCancel,
   OAuthMenuWrapper,
 } from "./OAuthMenu.styled";
-import React, { useEffect, useState } from "react";
 
 import { OAuthMenuProps } from "./OAuthMenu.types";
+import React from "react";
 import { cookieNames } from "../../../settings/cookies";
 import { getCode } from "../../../api/oauth";
 import { getCookie } from "../../../utils/cookieInteraction";
 
 export const OAuthMenu: React.FC<OAuthMenuProps> = (props): JSX.Element => {
-  const [code, setCode] = useState("");
-  const [status, setStatus] = useState("");
-
-  useEffect(() => {
-    getCode(props.oauth.app.id, getCookie(cookieNames.refresh_token)!).then(
-      (response) => {
-        setCode(response.data.data.code);
-        setStatus(response.data.status.code);
+  const Authorize = () => {
+    // setAuthorized(true);
+    props.setauth(true);
+    getCode(
+      props.oauth.app.id,
+      getCookie(cookieNames.refresh_token)!,
+      getCookie(cookieNames.user)!
+    ).then((response) => {
+      switch (response.data.status.code) {
+        case 201:
+          window.location.href = `${url}?code=${response.data.data.code}&status=${response.data.status.code}`;
+          break;
+        case 400:
+          console.error(
+            `Something went wrong: ${response.data.status.code} (${response.data.status.message})`
+          );
+          break;
+        default:
+          console.error(
+            `Unimplemented response: ${response.data.status.code} (${response.data.status.message})`
+          );
+          break;
       }
-    );
-  }, [props.oauth.app.id]);
+    });
+  };
 
   let url =
     props.oauth.redirect.target +
@@ -32,11 +46,7 @@ export const OAuthMenu: React.FC<OAuthMenuProps> = (props): JSX.Element => {
       <OAuthMenuCancel href={`${url}?status=499`}>
         {props.lang.site.menu.cancel}
       </OAuthMenuCancel>
-      <OAuthMenuAuthorize
-        onClick={() =>
-          (window.location.href = `${url}?code=${code}&status=${status}`)
-        }
-      >
+      <OAuthMenuAuthorize onClick={Authorize}>
         {props.lang.site.menu.authorize}
       </OAuthMenuAuthorize>
     </OAuthMenuWrapper>

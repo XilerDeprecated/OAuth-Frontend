@@ -8,4 +8,5 @@ export interface OAuthUrlParams {
 export interface OAuthProps {
     url: OAuthUrlParams;
     token: string;
+    user: string;
 }

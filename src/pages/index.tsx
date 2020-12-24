@@ -11,11 +11,12 @@ const AuthorizePage: React.FC = () => {
   let params = useParams<OAuthUrlParams>();
 
   const token = getCookie(cookieNames.refresh_token);
+  const user = getCookie(cookieNames.user);
 
   const url = `/signin/${params.organisation}/${params.app}/${params.redirect}`;
 
-  if (token === undefined || token?.trim().length === 0) history.push(url);
-  else return <OAuth token={token} url={params} />;
+  if (token === undefined || token?.trim().length === 0 || user?.trim().length === 10 || user === undefined) history.push(url);
+  else return <OAuth token={token} user={user} url={params} />;
 
   return (
     <Loader message="Oops...">

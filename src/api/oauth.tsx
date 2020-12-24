@@ -16,7 +16,7 @@ const organisation: XilerOrganisation = {
 };
 
 const app: XilerApp = {
-  id: "ceSLYWm2cXt5yiQO",
+  id: "83ed1",
   organisation,
   permissions: [
     {
@@ -54,11 +54,17 @@ export const getOAuthData = (
   return undefined;
 };
 
-export const getCode = (app: string, token: string) =>
+export const getCode = (app: string, token: string, user: string) =>
   axios.post(
     endpoints.base + endpoints.generate_code,
     {
       token: token,
       app: app,
+      user: user
     },
+    {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
   );

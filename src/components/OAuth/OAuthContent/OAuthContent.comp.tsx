@@ -2,6 +2,7 @@ import {
   OAuthContentOuterWrapper,
   OAuthContentWrapper,
 } from "./OAuthContent.styled";
+import React, { useState } from "react";
 import { getLanguages, getSiteLanguage } from "../../../utils/language";
 
 import { Loader } from "../../Loading/Loader.comp";
@@ -13,11 +14,12 @@ import { OAuthLanguageNavigation } from "../OAuthLanguageNavigation/OAuthLanguag
 import { OAuthMenu } from "../OAuthMenu/OAuthMenu.comp";
 import { OAuthPermissions } from "../OAuthPermissions/OAuthPermissions.comp";
 import { OAuthSectionSeperator } from "../OAuth.styled";
-import React from "react";
 import { Seo } from "../../Seo.comp";
 import { lang } from "../../../lang/oauth";
 
 export const OAuthContent: React.FC<OAuthContentProps> = (props) => {
+  const [isAuthorized, setAuthorized] = useState(false);
+  
   let l = getSiteLanguage(props.user, props.url.lang);
 
   // {props.organisation} {props.id} {props.redirect}
@@ -25,7 +27,7 @@ export const OAuthContent: React.FC<OAuthContentProps> = (props) => {
   if (props.oauth === undefined)
     return <Loader message="Invalid OAuth url!"></Loader>;
 
-  return (
+  return isAuthorized ? <Loader message="Authorizing..." /> : (
     <React.Fragment>
       <Seo
         color="#2BBADE"
@@ -48,7 +50,7 @@ export const OAuthContent: React.FC<OAuthContentProps> = (props) => {
           <OAuthSectionSeperator />
           <OAuthInfo lang={l} oauth={props.oauth} />
           <OAuthSectionSeperator />
-          <OAuthMenu lang={l} oauth={props.oauth} />
+          <OAuthMenu lang={l} oauth={props.oauth} setauth={setAuthorized} />
         </OAuthContentWrapper>
       </OAuthContentOuterWrapper>
       <OAuthLanguageNavigation
