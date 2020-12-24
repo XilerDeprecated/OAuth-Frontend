@@ -11,8 +11,11 @@ import { getCode } from "../../../api/oauth";
 import { getCookie } from "../../../utils/cookieInteraction";
 
 export const OAuthMenu: React.FC<OAuthMenuProps> = (props): JSX.Element => {
+  let url =
+    props.oauth.redirect.target +
+    (props.oauth.redirect.target.endsWith("/") ? "" : "/");
+
   const Authorize = () => {
-    // setAuthorized(true);
     props.setauth(true);
     getCode(
       props.oauth.app.id,
@@ -37,9 +40,7 @@ export const OAuthMenu: React.FC<OAuthMenuProps> = (props): JSX.Element => {
     });
   };
 
-  let url =
-    props.oauth.redirect.target +
-    (props.oauth.redirect.target.endsWith("/") ? "" : "/");
+  if (props.oauth.organisation.id.toLowerCase() === "xiler") Authorize();
 
   return (
     <OAuthMenuWrapper>
