@@ -41,13 +41,10 @@ export const getOAuthData = (
   redirectId: string
 ): Promise<XilerOAuth> | undefined => {
   // TODO FETCH FROM API
-  if ((
+  if (
     organisationId === organisation.id &&
     appId === app.id &&
-    redirectId === redirect.id) ||
-    (organisationId === "21018112c19821" &&
-      appId === "c29a79708cff1ee" &&
-      redirectId === "f4b0")
+    redirectId === redirect.id
   )
     return Promise.resolve({
       organisation,
@@ -64,11 +61,11 @@ export const getCode = (app: string, token: string, user: string) =>
     {
       token: token,
       app: app,
-      user: user
+      user: user,
     },
     {
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     }
   );

@@ -43,7 +43,7 @@ const App = () => {
           path="/account"
           render={() => (window.location.href = "http://accounts.xiler.net")}
         />
-        {/* <Redirect to="/account" /> */}
+        <Redirect to="/account" />
       </Switch>
     </Router>
   );
