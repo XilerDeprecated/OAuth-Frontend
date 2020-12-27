@@ -40,7 +40,7 @@ export const OAuthMenu: React.FC<OAuthMenuProps> = (props): JSX.Element => {
     });
   };
 
-  if (props.oauth.organisation.id.toLowerCase() === "xiler") Authorize();
+  // if (props.oauth.organisation.id.toLowerCase() === "xiler") Authorize();
 
   return (
     <OAuthMenuWrapper>
